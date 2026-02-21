@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Harshal Ahire - Full Stack Engineer Portfolio
 
-## Getting Started
+## Project Structure
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+portfolio-app/
+├── public/
+│   ├── Professional_Image.png   # Profile photo
+│   ├── HARSHAL-AHIRE-Resume.pdf # Resume download
+│   └── og-image.png             # OpenGraph preview
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx           # Root layout + SEO metadata
+│   │   ├── page.tsx             # Home page (all sections)
+│   │   ├── globals.css          # Tailwind v4 CSS-first config + utilities
+│   │   ├── not-found.tsx        # Custom 404
+│   │   ├── sitemap.ts           # Auto sitemap.xml
+│   │   ├── robots.ts            # robots.txt
+│   │   ├── projects/
+│   │   │   └── page.tsx         # Detailed project showcase
+│   │   ├── blog/
+│   │   │   ├── page.tsx         # Blog listing
+│   │   │   └── [slug]/
+│   │   │       └── page.tsx     # Individual blog post
+│   │   ├── contact/
+│   │   │   └── page.tsx         # Contact page
+│   │   └── api/
+│   │       └── contact/
+│   │           └── route.ts     # Resend email API
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.tsx       # Responsive navbar + mobile menu
+│   │   │   └── Footer.tsx       # Footer with links
+│   │   ├── sections/
+│   │   │   ├── HeroSection.tsx      # Photo, name, CTAs
+│   │   │   ├── AboutSection.tsx     # Bio + highlights
+│   │   │   ├── ExperienceSection.tsx # SPARD internship timeline
+│   │   │   ├── TechStackSection.tsx  # Icon grid
+│   │   │   ├── ProjectsSection.tsx   # Cards
+│   │   │   ├── AchievementsSection.tsx # Awards
+│   │   │   ├── CTASection.tsx        # Call to action
+│   │   │   └── ContactForm.tsx       # Form with states
+│   │   └── ui/
+│   │       ├── Animations.tsx    # FadeIn, Stagger, StaggerItem
+│   │       └── Button.tsx        # Animated button component
+│   └── lib/
+│       ├── config.ts            # Site-wide constants
+│       ├── projects.ts          # Project data
+│       └── blog.ts              # Blog post data
+├── .env.local                   # API keys (gitignored)
+└── next.config.ts               # Next.js config
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 (CSS-first config)
+- **Animations**: Framer Motion
+- **Email**: Resend API
+- **Icons**: lucide-react
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Setup
 
-## Learn More
+Copy `.env.local.example` → `.env.local` and fill in:
 
-To learn more about Next.js, take a look at the following resources:
+```
+RESEND_API_KEY=re_your_key_here
+CONTACT_TO_EMAIL=your@email.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev       # http://localhost:3000
+npm run build     # Production build
+npm run lint      # ESLint check
+```
 
-## Deploy on Vercel
+## Deployment (Vercel)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push to GitHub
+2. Import repo at vercel.com/new
+3. Add environment variables:
+   - `RESEND_API_KEY`
+   - `CONTACT_TO_EMAIL`
+4. Deploy — automatic on every push
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Customisation
+
+- **Personal info**: `src/lib/config.ts`
+- **Projects**: `src/lib/projects.ts`
+- **Blog posts**: `src/lib/blog.ts`
+- **Photo**: `public/Professional_Image.png`
+- **Resume**: `public/HARSHAL-AHIRE-Resume.pdf`
